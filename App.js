@@ -13,6 +13,8 @@ import {
   StyleSheet 
 } from 'react-native';
 
+import picBiscuit from './assets/biscuit.jpg'
+
 const { height, width } = Dimensions.get('window')
 
 export default function App() {
@@ -31,22 +33,35 @@ export default function App() {
     bumpProgress()
   }
   return (
-    <View style={{padding: 50}}>
-      {Platform.OS === 'ios' && <ProgressViewIOS progress={progress} />}
-      {Platform.OS === 'android' && 
-      <ProgressBarAndroid
-        progress={progress}
-        styleAttr="Horizontal"
-        indeterminate={false}
-        color="blue"
-      />}
-      <ActivityIndicator size="large" color="#61DBFB" />
-      <Button title="click me" onPress={onButtonPress} />
-      <Text>Height: {height}</Text>
-      <Text>Witdh: {width}</Text>
-        <Text>OS: {Platform.OS}</Text>
+    <View style={styles.page}>
+     <Text style={styles.text}>red</Text>
+     <Text style={[styles.text, styles.selectedText]}>green</Text>
+     <Text style={styles.text}>blue</Text>
     </View>
   )
 
 }
 
+const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignItems: "flex-start",
+    marginTop: 40,
+    backgroundColor: "#DDD",
+  },
+  text: {
+    textAlign: "center",
+    fontSize: 22 ,
+    color: "red",
+    backgroundColor: "yellow",
+    margin: 10,
+    padding: 5, 
+  },
+  selectedText: {
+    alignSelf: "flex-end",
+    backgroundColor: "red",
+    color: "yellow",
+  },
+})
