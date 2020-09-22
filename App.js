@@ -1,42 +1,23 @@
 import React, { useState } from 'react';
 
 import { 
-  Text,
   View, 
-  ActivityIndicator, 
-  ProgressViewIOS, 
-  ProgressBarAndroid,
-  Button, 
-  Alert,
-  Dimensions,
-  Platform,
-  StyleSheet 
+  Image,
+  StyleSheet,
+  Dimensions
 } from 'react-native';
-
-import picBiscuit from './assets/biscuit.jpg'
 
 const { height, width } = Dimensions.get('window')
 
+import picBiscuit from './assets/biscuit.jpg'
+import picJungle from './assets/jungle.jpg'
+
 export default function App() {
-  const [progress, setProgress] = useState(0.0)
 
-  const bumpProgress = () => {
-    if (progress >= 1) {
-      setProgress(0)
-    } else {
-      setProgress(progress + 0.1)
-    }
-  }
-
-  const onButtonPress = () => {
-    Alert.alert(`${new Date().toLocaleTimeString()} boop!`);
-    bumpProgress()
-  }
   return (
     <View style={styles.page}>
-     <Text style={styles.text}>red</Text>
-     <Text style={[styles.text, styles.selectedText]}>green</Text>
-     <Text style={styles.text}>blue</Text>
+      <Image style={styles.image} source={picBiscuit} />
+      <Image style={styles.image} source={picJungle} />
     </View>
   )
 
@@ -45,23 +26,14 @@ export default function App() {
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "space-around",
-    alignItems: "flex-start",
-    marginTop: 40,
-    backgroundColor: "#DDD",
+
+    justifyContent: "center",
+    alignItems: "center",
   },
-  text: {
-    textAlign: "center",
-    fontSize: 22 ,
-    color: "red",
-    backgroundColor: "yellow",
+  image: {
+    flex: 1,
+    borderRadius: 50,
     margin: 10,
-    padding: 5, 
-  },
-  selectedText: {
-    alignSelf: "flex-end",
-    backgroundColor: "red",
-    color: "yellow",
+    width: width - 10,
   },
 })
