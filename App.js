@@ -2,38 +2,46 @@ import React, { useState } from 'react';
 
 import { 
   View, 
-  Image,
+  Text,
   StyleSheet,
   Dimensions
 } from 'react-native';
 
 const { height, width } = Dimensions.get('window')
 
-import picBiscuit from './assets/biscuit.jpg'
-import picJungle from './assets/jungle.jpg'
-
 export default function App() {
 
+  const [backgroundColor, setBackgroundColor] = useState("blue")
+
   return (
-    <View style={styles.page}>
-      <Image style={styles.image} source={picBiscuit} />
-      <Image style={styles.image} source={picJungle} />
+    <View style={styles.container, {backgroundColor}}>
+      <Text 
+        style={styles.button}
+        onPress={()=> setBackgroundColor("green")}
+      >green</Text>
+      <Text 
+        style={styles.button}
+        onPress={()=> setBackgroundColor("red")}
+      >red</Text>
     </View>
   )
 
 }
 
 const styles = StyleSheet.create({
-  page: {
+  container: {
     flex: 1,
-
+    display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
-  image: {
-    flex: 1,
-    borderRadius: 50,
+  button: {
+    fontSize: 30,
+    borderWidth: 2,
+    borderRadius: 10,
+    alignSelf: "stretch",
+    textAlign: "center",
     margin: 10,
-    width: width - 10,
+    padding: 10,
   },
 })
